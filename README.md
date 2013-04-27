@@ -1,7 +1,7 @@
 webhidapi-firebreath
 ====================
 
-Browser plug-in interface to HIDAPI using FireBreath, exposing methods through JavaScript interfaces 
+Browser plug-in interface to HIDAPI using FireBreath, exposing methods through JavaScript interfaces (for Linux, Windows, OS X)
 
 See also webhidapi-java for the same interface with more coffee and more exploits
 
