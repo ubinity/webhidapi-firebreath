@@ -1,0 +1,9 @@
+{
+  "name": "hidapiBrowserPlugin",
+  "version": "${FBSTRING_PLUGIN_VERSION}",
+  "description": "Firebreath mapping of hidapi",
+
+	"plugins": [
+    { "path": "nphidapiBrowserPlugin.dll", "public": true }
+  ]
+}

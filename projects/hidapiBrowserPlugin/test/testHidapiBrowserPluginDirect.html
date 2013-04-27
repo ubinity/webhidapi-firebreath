@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Test hidapiBrowserPlugin</title>
+</head>
+    <script type="text/javascript">
+
+        function pluginLoaded() {
+            alert("Plugin loaded!");
+        }
+
+        function hidScan() {
+            var plugin = document.getElementById("hidapiPlugin");
+            var result = plugin.hid_enumerate();
+            alert("Number of devices " + result.length);
+        }
+
+	function testExchange() {
+	    var plugin = document.getElementById("hidapiPlugin");
+	    var result = plugin.hid_enumerate();
+	    var path;
+	    for (var i=0; i<result.length; i++) {
+		if ((result[i]["vendor_id"] == 0x2581) && (result[i]["product_id"] == 0x1807) && 
+			((result[i]["interface_number"] == 1) || (result[i]["usage_page"] == 65440))) {
+			path = result[i]["path"];
+			break;
+		}
+	    }
+	    if (typeof path == "undefined") {
+		alert("Device not found");
+		return;
+	    }
+	    var device = plugin.hid_open_path(path);
+	    if (device == null) {
+		alert("Error opening device");
+		return;
+	    }
+	    var apdu = "f001000000";
+	    apdu = "00" + apdu;
+	    while ((apdu.length / 2) != 65) {
+		apdu += "00";
+	    }
+	    var result = device.hid_write(apdu);
+	    alert("Write result " + result);
+	    result = device.hid_read(65, 3000);
+	    alert("Read result " + result); 
+	}
+        
+    </script>
+<object id="hidapiPlugin" type="application/x-hidapibrowserplugin" width="300" height="300">
+    <param name="onload" value="pluginLoaded" />
+</object><br />
+    
+<a href="#" onclick="javascript:hidScan()">HID Scan</a> <br />
+<a href="#" onclick="javascript:testExchange()">Exchange</a><br/>
+</body>
+</html>
