@@ -56,7 +56,7 @@ int hidapiBrowserDeviceAPI::hexToBinary(const std::string& data, unsigned char *
         d1 = digitToHex(data[i]);
         d2 = digitToHex(data[i + 1]);
         if ((d1 < 0) || (d2 < 0)) {
-            return false;
+            return -1;
         }
         targetBin[i / 2] = (d1 << 4) + d2;
     } 

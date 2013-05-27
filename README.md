@@ -10,6 +10,7 @@ How to build
 
   * Download FireBreath from http://www.firebreath.org/
   * Download hidapi from http://www.signal11.us/oss/hidapi/, copy it to external/hidapi from the FireBreath root directory
+  * If building/deploying on Linux, make sure libusb-1.0 is installed 
   * Rebuild FireBreath "makefiles" with prepmake - see http://colonelpanic.net/2010/11/firebreath-tips-working-with-source-control/
   * Build FireBreath plug-in for your target platform(s) - http://www.firebreath.org/display/documentation/Building+FireBreath+Plugins
 
